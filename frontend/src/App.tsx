@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import axios from "axios";
 
 interface Todo {
   id: number;
+
   text: string;
   completed: boolean;
 }
