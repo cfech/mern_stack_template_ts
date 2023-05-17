@@ -1,0 +1,17 @@
+{
+  "name": "mern-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start:backend": "node ./backend/server.js",
+    "start:frontend": "to be implemented",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "author": "",
+  "license": "ISC"
+}
+
