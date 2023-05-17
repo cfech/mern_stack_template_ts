@@ -1,7 +1,7 @@
 // todoService.js - this service is responsible for all the CRUD operations on the database
 // It is called by the controller
 
-const {dbConnection} = require('../dbSetup');
+const { dbConnection } = require("../dbSetup");
 
 const getTodos = async () => {
   return dbConnection.find();
@@ -38,4 +38,4 @@ const deleteTodo = async (id) => {
   return todo;
 };
 
-module.exports = {getTodos, getTodoById, createTodo, updateTodo, deleteTodo};
+module.exports = { getTodos, getTodoById, createTodo, updateTodo, deleteTodo };

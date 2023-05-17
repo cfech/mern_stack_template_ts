@@ -6,7 +6,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "google"
+        "google",
+        "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
