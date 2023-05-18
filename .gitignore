@@ -2,4 +2,5 @@
 .idea
 *.env
 node_modules
-/backend/static
+/backend/src/static
+/backend/build

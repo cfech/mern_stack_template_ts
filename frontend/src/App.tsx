@@ -26,7 +26,7 @@ function App() {
   };
 
   const toggleCompleted = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const id: number = parseInt(e.target.getAttribute("data-id"));
+    const id: number = parseInt(e.target.getAttribute("data-id") || "1000");
     const nextTodos = todos.map((todo) => {
       if (todo.id == id) {
         return { ...todo, completed: !todo.completed };

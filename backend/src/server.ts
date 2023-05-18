@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express from "express";
 import helmet from "helmet";
 import path from "path";
 import morgan from "morgan";
@@ -11,7 +11,7 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 import todoController from "./controllers/todoController";
 
 const port = 80;
-const app: Express = express();
+const app = express();
 
 // =========== MIDDLEWARE ===========
 
@@ -36,7 +36,7 @@ app.use("/api", todoController);
 // This is an implementation of a monolithic application, comment this out if we want to run microservices
 
 if (process.env.MONOLITH === "true") {
-    app.use(express.static(path.join(__dirname, "static/dist"))); // middleware for serving static files https://www.npmjs.com/package/express-static
+  app.use(express.static(path.join(__dirname, "static/dist"))); // middleware for serving static files https://www.npmjs.com/package/express-static
 }
 
 // app.use(compression()); // middleware for compressing data https://www.npmjs.com/package/compression
@@ -47,9 +47,9 @@ if (process.env.MONOLITH === "true") {
 
 // Starting the app
 connectToDB()
-    .then(() => {
-        app.listen(port, () => {
-            console.log(`Server running on  http://localhost:${port}...`);
-        });
-    })
-    .catch((error) => console.log(error));
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Server running on  http://localhost:${port}...`);
+    });
+  })
+  .catch((error) => console.log(error));
