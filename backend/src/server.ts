@@ -20,7 +20,7 @@ app.use(morgan("dev")); // middleware for logging http requests https://www.npmj
 app.use(express.urlencoded({ extended: true })); // middleware for parsing urlencoded data https://www.npmjs.com/package/body-parser
 app.use(express.json()); // middleware for parsing json data https://www.npmjs.com/package/body-parser
 
-// app.use(helmet()); // middleware for that takes care of some common security configuration https://www.npmjs.com/package/helmet
+app.use(helmet()); // middleware for that takes care of some common security configuration https://www.npmjs.com/package/helmet
 
 // Have to configure Cross Origin Resource Sharing since we are making a request from a different port
 // Says, allow the app to accept requests from...
