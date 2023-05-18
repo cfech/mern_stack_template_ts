@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import axios from "axios";
 
 interface Todo {
   id: number;
+
   text: string;
   completed: boolean;
 }
@@ -25,7 +26,7 @@ function App() {
   };
 
   const toggleCompleted = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const id: number = parseInt(e.target.getAttribute("data-id"));
+    const id: number = parseInt(e.target.getAttribute("data-id") || "1000");
     const nextTodos = todos.map((todo) => {
       if (todo.id == id) {
         return { ...todo, completed: !todo.completed };

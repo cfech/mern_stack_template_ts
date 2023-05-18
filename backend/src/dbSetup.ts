@@ -1,20 +1,20 @@
 // Configuring environment variables
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+import * as path from "path";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
 
 // Mongod db documentation: https://mongoosejs.com/docs/connections.html
-const uri = "mongodb://localhost:27017";
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+const uri = `mongodb://${process.env.MONDDB_URI}:${process.env.MONGODB_PORT}`;
+const options: mongoose.ConnectOptions = {
   user: process.env.MONGODB_USERNAME,
   pass: process.env.MONGODB_PASSWORD,
   authSource: process.env.MONGODB_AUTHSOURCE,
   dbName: process.env.MONGODB_DB,
 };
-const connectToDB = async () => {
+
+const connectToDB = async (): Promise<void> => {
   await mongoose.connect(uri, options).then(() => {
     console.log("Connected to MongoDB");
     if (process.env.SEED_DB === "true") {
@@ -26,32 +26,36 @@ const connectToDB = async () => {
 };
 
 // Define todo schema
-const todoSchema = new mongoose.Schema({
+const todoSchema: mongoose.Schema = new mongoose.Schema({
   id: Number,
   text: String,
-
   completed: Boolean,
 });
 
 // Define todo model
-const dbConnection = mongoose.model(process.env.MONGODB_TABLE, todoSchema);
+const dbConnection: mongoose.Model<any> = mongoose.model(
+  process.env.MONGODB_TABLE!,
+  todoSchema
+);
 
 /**
  * Drop the database if it exists
  * @return {Promise<void>}
  */
-async function dropDBIfExists() {
+async function dropDBIfExists(): Promise<void> {
   try {
-    await dbConnection.db.dropCollection(process.env.MONGODB_TABLE).then(() => {
-      console.log("Collection dropped");
-    });
+    await dbConnection.db
+      .dropCollection(process.env.MONGODB_TABLE!)
+      .then(() => {
+        console.log("Collection dropped");
+      });
   } catch (err) {
-    console.log("nod db found:");
+    console.log("No db found:");
   }
 }
 
 // Seed the database on startup
-const seedDb = async () => {
+const seedDb = async (): Promise<void> => {
   await dropDBIfExists();
   await dbConnection
     .insertMany([
@@ -109,4 +113,4 @@ const seedDb = async () => {
     .then(() => console.log("DB Seeded"));
 };
 
-module.exports = { seedDb, connectToDB, dbConnection };
+export { seedDb, connectToDB, dbConnection };
