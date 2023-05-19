@@ -31,6 +31,6 @@ cd ..
 
 cp -r backend/src/static backend/build/static
 
-cp backend/src/.env backend/build
+#cp backend/src/.env backend/build
 
 echo "Build complete"

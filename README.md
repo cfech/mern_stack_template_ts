@@ -20,7 +20,7 @@
 ## Backend Environment Variables ##
 - this backend is set up to use environment variables to log into the database, the .env file is not to be committed to a git repository because it contains sensitive information
 - I am including the following comment as an example, real username and password would normally not be committed to the repository
-- before starting the app create a file named `.env` in the backend folder/src
+- before starting the app create a file named `.env` in the backend/src folder
 - copy the following text block into the file
 ```
 SEED_DB=true
@@ -97,6 +97,10 @@ MONOLITH=true
   - mocha: backend node api - https://mochajs.org/
   - cypress: integration - https://www.cypress.io/
 
+# Running Whole App In Docker #
+- not completely working
+- from root run `docker build -t example-app .`
+- `docker run -p 80:80 --name example-app --env-file ./docker.env`
 
 
 
