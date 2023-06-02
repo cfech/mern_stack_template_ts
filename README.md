@@ -1,10 +1,7 @@
 # Mern Example
 
-
-## General Thoughts/TODOS ##
-- introduce MUI for react?
-- standardize linting across the app
-- containerize
+This is a completed example template of a MERN stack template. 
+It is complete with a seeded MongoDB, Node Express backend, and React frontend (using Vite) and linter.
 
 # Tech Needed #
 - Node.js
@@ -136,4 +133,10 @@ MONOLITH=true
 - `npm install eslint eslint-config-prettier prettier –-save-dev`
 - `eslint --init`
 
+
+
+## General Thoughts/TODOS ##
+- introduce MUI for react?
+- standardize linting across the app
+- containerize
 
